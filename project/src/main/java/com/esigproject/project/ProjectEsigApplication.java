@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class })
 @RestController
-public class DemoApplication {
+public class ProjectEsigApplication {
 
 	@GetMapping(value = "/hello")
 	public String getMethodName() {
@@ -18,7 +18,7 @@ public class DemoApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(ProjectEsigApplication.class, args);
 	}
 
 }
