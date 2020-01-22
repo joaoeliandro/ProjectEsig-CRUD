@@ -1,7 +1,7 @@
-package com.esigproject.project.repository;
+// package com.esigproject.project.repository;
 
-import com.esigproject.project.model.Item;
+// import com.esigproject.project.model.Item;
 
-public class ItemRepository extends Item {
+// public class ItemRepository extends Item {
 
-}
+// }
