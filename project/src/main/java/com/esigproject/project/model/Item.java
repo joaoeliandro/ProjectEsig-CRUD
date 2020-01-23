@@ -17,6 +17,11 @@ public class Item implements Serializable {
     @Column
     @NotNull
     @NotEmpty
+    private String nomeItem;
+
+    @Column
+    @NotNull
+    @NotEmpty
     private String destinatario;
 
     @Column
@@ -35,6 +40,14 @@ public class Item implements Serializable {
     
     public void setId(long id){
         this.id = id;
+    }
+
+    public String getNomeItem(){
+        return nomeItem;
+    }
+    
+    public void setNomeItem(String nomeItem){
+        this.nomeItem = nomeItem;
     }
 
     public String getDestinatario() {
