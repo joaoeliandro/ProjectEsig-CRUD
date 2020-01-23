@@ -29,14 +29,22 @@
 <body>
     <nav class="container-fluid"><span class="title">Esig Project - CRUD</span></nav>
     <div class="container-fluid">
-        <form method="POST">
-            Nome: <input type="text" name="nome" placeholder="Nome do item" id="itemNome">
-            Destinatário: <input type="text" name="dest" placeholder="Destinatário" id="itemDest">
-            Remetente: <input type="text" name="remetente" placeholder="Remetente" id="itemRemet">
-            Email: <input type="email" name="email" placeholder="emailremetente@project.com" id="itemEmailRemet">
+        <form th:object="${Item}" method="POST" th:action="@{/home/item}">
+            Nome: <input type="text" th:field="*{nomeItem}" name="nome" placeholder="Nome do item" id="itemNome">
+            Destinatário: <input type="text" th:field="*{destinatario}" name="dest" placeholder="Destinatário" id="itemDest">
+            Remetente: <input type="text" th:field="*{remetente}" name="remetente" placeholder="Remetente" id="itemRemet">
+            Email: <input type="email" th:field="*{email}" name="email" placeholder="emailremetente@project.com" id="itemEmailRemet">
 
             <button type="submit">Salvar</button>
         </form>
+        <div th:each="item : ${Itens}">
+            <div class="row">
+                <p><span th:text="${item.nomeItem}"></span></p>
+                <p><span th:text="${item.destinatario}"></span></p>
+                <p><span th:text="${item.remetente}"></span></p>
+                <p><span th:text="${item.email}"></span></p>
+            </div>
+        </div>
     </div>
 </body>
 
