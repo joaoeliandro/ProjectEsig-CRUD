@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -26,6 +27,13 @@ public class ProjectEsigController {
         return mv;
     }
 
+    @GetMapping("allItens")
+    public ModelAndView allItens(){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("allItens", itemService.findAll());
+        return mv;
+    }
+
     @PostMapping("salvar")
     public void salvar(@RequestBody Item item) {
         itemService.save(item);
@@ -33,11 +41,17 @@ public class ProjectEsigController {
     
     @DeleteMapping
     public void delete(@RequestBody Item item) {
-        itemService.save(item);
+        itemService.deleteById(item.getId());
     }
 
     @PostMapping("update")
     public void update(@RequestBody Item item) {
-        itemService.save(item);
+        Item itemNovo = itemService.findById(item.getId());
+
+        itemNovo.setDestinatario(item.getDestinatario());
+        itemNovo.setRemetente(item.getRemetente());
+        itemNovo.setEmail(item.getEmail());
+
+        itemService.save(itemNovo);
     }
 }
