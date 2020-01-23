@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Style -->
-    <!-- <link rel="stylesheet" type="text/css" href="/src/main/resources/static/style.css">
-    </link> -->
+    <link rel="stylesheet" href="/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap 4 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -27,22 +28,73 @@
 </head>
 
 <body>
-    <nav class="container-fluid"><span class="title">Esig Project - CRUD</span></nav>
-    <div class="container-fluid">
-        <form th:object="${Item}" method="POST" th:action="@{/home/item}">
-            Nome: <input type="text" th:field="*{nomeItem}" name="nome" placeholder="Nome do item" id="itemNome">
-            Destinatário: <input type="text" th:field="*{destinatario}" name="dest" placeholder="Destinatário" id="itemDest">
-            Remetente: <input type="text" th:field="*{remetente}" name="remetente" placeholder="Remetente" id="itemRemet">
-            Email: <input type="email" th:field="*{email}" name="email" placeholder="emailremetente@project.com" id="itemEmailRemet">
-
-            <button type="submit">Salvar</button>
-        </form>
-        <div th:each="item : ${Itens}">
-            <div class="row">
-                <p><span th:text="${item.nomeItem}"></span></p>
-                <p><span th:text="${item.destinatario}"></span></p>
-                <p><span th:text="${item.remetente}"></span></p>
-                <p><span th:text="${item.email}"></span></p>
+    <nav class="container-fluid header"><span class="title">Esig Project - CRUD</span></nav>
+    <div class="container">
+        <div class="container-fluid">
+            <div class="crud">
+                <div class="col-sm-12 col-xs-12">
+                    <form th:object="${Item}" method="POST" th:action="@{/home/item}">
+                        <div class="row" style="margin-top: 5px;">
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="col">
+                                    <span>Nome:</span>
+                                    <input type="text" th:field="*{nomeItem}" name="nome" placeholder="Nome do item"
+                                        id="itemNome">
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="col">
+                                    <span>Destinatário:</span>
+                                    <input type="text" th:field="*{destinatario}" name="dest" placeholder="Destinatário"
+                                        id="itemDest">
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="col">
+                                    <span>Remetente:</span>
+                                    <input type="text" th:field="*{remetente}" name="remetente" placeholder="Remetente"
+                                        id="itemRemet">
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="col">
+                                    <span>Email:</span>
+                                    <input type="email" th:field="*{email}" name="email"
+                                        placeholder="emailremetente@project.com" id="itemEmailRemet">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col" style="margin: 10px auto 10px 465px;">
+                            <button id="btn" type="submit">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="crud">
+                <div class="col-sm-12 col-xs-12">
+                    <div th:each="item : ${Itens}">
+                        <div class="row tbl">
+                            <div class="col tbl">
+                                <p><span th:text="${item.nomeItem}"></span></p>
+                            </div>
+                            <div class="col tbl">
+                                <p><span th:text="${item.destinatario}"></span></p>
+                            </div>
+                            <div class="col tbl">
+                                <p><span th:text="${item.remetente}"></span></p>
+                            </div>
+                            <div class="col tbl">
+                                <p><span th:text="${item.email}"></span></p>
+                            </div>
+                            <div class="col tbl" style="text-align: center;">
+                                <p><i class="fa fa-edit btn-func"></i></p>
+                            </div>
+                            <div class="col tbl" style="text-align: center;">
+                                <p><i class="fa fa-trash btn-func"></i></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
