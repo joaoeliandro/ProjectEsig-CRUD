@@ -71,33 +71,61 @@
                 </div>
             </div>
             <div class="crud">
-                <div class="col-sm-12 col-xs-12">
-                    <div th:each="item : ${Itens}">
-                        <div class="row tbl">
-                            <div class="col tbl">
-                                <p><span th:text="${item.nomeItem}"></span></p>
-                            </div>
-                            <div class="col tbl">
-                                <p><span th:text="${item.destinatario}"></span></p>
-                            </div>
-                            <div class="col tbl">
-                                <p><span th:text="${item.remetente}"></span></p>
-                            </div>
-                            <div class="col tbl">
-                                <p><span th:text="${item.email}"></span></p>
-                            </div>
-                            <div class="col tbl" style="text-align: center;">
-                                <p><i class="fa fa-edit btn-func"></i></p>
-                            </div>
-                            <div class="col tbl" style="text-align: center;">
-                                <p><i class="fa fa-trash btn-func"></i></p>
-                            </div>
-                        </div>
-                    </div>
+                <div style="margin-top: 20px; text-align: center;">
+                    <table class="table table-bordered table-condensed table-striped table-hover"
+                        th:each="item : ${Itens}" border="1">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Item</th>
+                                <th>Destinatário</th>
+                                <th>Remetente</th>
+                                <th>E-mail</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-row">
+                            <tr>
+                                <td><span th:text="${item.id}"></span></td>
+                                <td><span th:text="${item.nomeItem}"></span></td>
+                                <td><span th:text="${item.destinatario}"></span></td>
+                                <td><span th:text="${item.remetente}"></span></td>
+                                <td><span th:text="${item.email}"></span></td>
+                                <td><i id="btnEdit" class="fa fa-edit btn-func"></i></td>
+                                <td><i id="btnDelete" class="fa fa-trash btn-func"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
+<script>
+    $(document).ready(() => {
+        $(".table tbody").on("click", "#btnEdit", () => {
+            $('tr').each(() => {
+                let row = $(this).find('td:eq(0)');
+                console.log(row);
+            });
+            //     let row = $(this).closest('tr');
+            //     let col = row.find('td:eq(0)').text();
+            //     console.log(col)
+        });
+    });
+    // $("#btnEdit").click(() => {
+    //     $.ajax(() => {
+
+    //     });
+    // });
+
+    // $("#btnDelete").click(() => {
+    //     $.ajax(() => {
+
+    //     });
+    // });
+</script>
 
 </html>
