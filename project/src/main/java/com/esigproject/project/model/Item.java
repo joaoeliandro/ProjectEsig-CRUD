@@ -6,8 +6,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.data.annotation.Id;
-
 @Entity(name="Item")
 public class Item implements Serializable {
     private static final long serialVersionUID = 1L;
