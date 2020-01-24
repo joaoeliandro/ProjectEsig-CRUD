@@ -9,4 +9,4 @@ Para a execução local do projeto, basta clonar na sua máquina, use uma IDE de
 
 Após iniciada a aplicação, basta acessar localhost:3306/. O projeto oferece uma ApiRest para acesso aos recursos: basta acessar os recursos GET e POST acrescentando "/item", e para DELETE "/item/{id}".
 
-#### Há um pequeno impasse na opção editar, favor verificar!
+#### Ps.: Há um pequeno impasse na opção editar, favor verificar! E ocorreu um erro durante a publicação, não tive mais tempo para resolvê-lo.
