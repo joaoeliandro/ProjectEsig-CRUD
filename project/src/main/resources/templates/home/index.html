@@ -72,7 +72,7 @@
                     </form>
                 </div>
             </div>
-            <div class="crud">
+            <div class="crud" style="margin-bottom: 50px;">
                 <div style="margin-top: 20px; text-align: center;">
                     <table id="table" class="container table table-bordered table-condensed table-striped table-hover"
                         border="1" style="width:98%">
@@ -94,7 +94,7 @@
                                 <td th:text="${item.destinatario}"></td>
                                 <td th:text="${item.remetente}"></td>
                                 <td th:text="${item.email}"></td>
-                                <td><i id="btnEdit" class="fa fa-edit btn-func"></i></td>
+                                <td id="btnEdit"><i class="fa fa-edit btn-func"></i></td>
                                 <td><a th:href="${(#mvc.url('PEC#delete').arg(0, item.id)).build()}">
                                         <i id="btnDelete" class="fa fa-trash btn-func"></i></a></td>
                             </tr>
@@ -106,30 +106,6 @@
     </div>
 </body>
 
-<script>
-    $(document).ready(() => {
-        let table = $('#table').DataTable({
-            "info": false,
-            "paging": false,
-        });
-
-        $('#table tbody').on('click', '#btnEdit', function () {
-            if ($(this).hasClass('selected')) {
-                $(this).removeClass('selected');
-            }
-            else {
-                table.$('tr.selected').removeClass('selected');
-                $(this).addClass('selected');
-            }
-
-            let data = table.row({ selected: true }).data();
-            console.log(data[0]);
-            $('#itemNome').val(data[1]);
-            $('#itemDest').val(data[2]);
-            $('#itemRemet').val(data[3]);
-            $('#itemEmailRemet').val(data[4]);
-        });
-    });
-</script>
+<script src="/script.js"></script>
 
 </html>
