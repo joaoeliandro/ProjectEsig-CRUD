@@ -50,7 +50,7 @@ public class ProjectEsigController {
     }
 
     @PutMapping("/item/{id}")
-    public ResponseEntity<Item> update(@PathVariable(value = "id") Long id, @Valid Item item) {
+    public ResponseEntity<?> update(@PathVariable(value = "id") Long id, @Valid Item item) {
         Item itemNovo = itemService.findById(id);
 
         if (itemNovo == null) {
@@ -63,6 +63,6 @@ public class ProjectEsigController {
         itemNovo.setEmail(item.getEmail());
         
         itemService.save(itemNovo);
-        return ResponseEntity.ok().body(itemNovo);
+        return ResponseEntity.ok().build();
     }
 }
