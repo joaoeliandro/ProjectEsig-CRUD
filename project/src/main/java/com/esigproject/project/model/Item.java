@@ -12,7 +12,6 @@ import org.hibernate.annotations.GenericGenerator;
 public class Item implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    // @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
