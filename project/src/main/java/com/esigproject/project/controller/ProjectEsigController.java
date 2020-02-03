@@ -12,12 +12,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
-@RestController
-@RequestMapping("/home")
+@RestController("/")
 public class ProjectEsigController {
 
     @Autowired
@@ -32,24 +32,25 @@ public class ProjectEsigController {
         return mv;
     }
 
-    private List<Item> getAllItens() {
+    @GetMapping("itemList")
+    public List<Item> getAllItens() {
         return itemService.findAll();
     }
 
-    @PostMapping("/item")
+    @PostMapping("item")
     public ModelAndView salvar(@Valid Item item) throws Exception {
         itemService.save(item);
-        return new ModelAndView("redirect:/home");
+        return new ModelAndView("redirect:/");
     }
 
-    @RequestMapping("/delete")
+    @RequestMapping("delete")
     public ModelAndView delete(Long id) {
         Item item = itemService.findById(id);
         itemService.deleteById(item.getId());
         return new ModelAndView("redirect:/home");
     }
 
-    @PutMapping("/item/{id}")
+    @PutMapping("item/{id}")
     public ResponseEntity<?> update(@PathVariable(value = "id") Long id, @Valid Item item) {
         Item itemNovo = itemService.findById(id);
 
