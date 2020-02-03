@@ -8,7 +8,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 
-@Entity(name="Item")
+@Entity
+@Table(name="Item")
 public class Item implements Serializable {
     private static final long serialVersionUID = 1L;
 
