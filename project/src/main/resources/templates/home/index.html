@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Icon -->
+    <link rel="shortcut icon" href="/icons/items-ico.ico" >
     <!-- Style -->
     <link rel="stylesheet" href="/style.css">
     <!-- Font Awesome -->
@@ -35,38 +37,39 @@
         <div class="container-fluid">
             <div class="crud">
                 <div class="col-sm-12">
-                    <form th:object="${Item}" method="POST" th:action="@{/home/item}">
+                    <form th:object="${Item}" method="POST" th:action="@{/item}">
                         <div class="row" style="margin-top: 5px;">
                             <div class="col-sm-3 col-xs-12">
                                 <div class="col">
                                     <span>Nome:</span>
                                     <input type="text" th:field="*{nomeItem}" name="nome" placeholder="Nome do item"
-                                        id="itemNome">
+                                        id="itemNome" required>
                                 </div>
                             </div>
                             <div class="col-sm-3 col-xs-12">
                                 <div class="col">
                                     <span>Destinatário:</span>
                                     <input type="text" th:field="*{destinatario}" name="dest" placeholder="Destinatário"
-                                        id="itemDest">
+                                        id="itemDest" required>
                                 </div>
                             </div>
                             <div class="col-sm-3 col-xs-12">
                                 <div class="col">
                                     <span>Remetente:</span>
                                     <input type="text" th:field="*{remetente}" name="remetente" placeholder="Remetente"
-                                        id="itemRemet">
+                                        id="itemRemet" required>
                                 </div>
                             </div>
                             <div class="col-sm-3 col-xs-12">
                                 <div class="col">
                                     <span>Email:</span>
                                     <input type="email" th:field="*{email}" name="email"
-                                        placeholder="emailremetente@project.com" id="itemEmailRemet">
+                                        placeholder="emailremetente@project.com" id="itemEmailRemet" required>
                                 </div>
                             </div>
                         </div>
-                        <div class="col" style="margin: 10px auto 10px 948px;">
+                        <div class="col" style="margin: 10px auto 10px 864px;">
+                            <button id="btnAtt" type="button" disabled>Atualizar</button>
                             <button id="btn" type="submit">Salvar</button>
                         </div>
                     </form>
@@ -94,7 +97,7 @@
                                 <td th:text="${item.destinatario}"></td>
                                 <td th:text="${item.remetente}"></td>
                                 <td th:text="${item.email}"></td>
-                                <td id="btnEdit"><i class="fa fa-edit btn-func"></i></td>
+                                <td id="btnEdit"><i class="fa fa-edit btn-func" th:onclick="'editar(\''+ ${item.id} +'\')'"></i></td>
                                 <td><a th:href="${(#mvc.url('PEC#delete').arg(0, item.id)).build()}">
                                         <i id="btnDelete" class="fa fa-trash btn-func"></i></a></td>
                             </tr>
