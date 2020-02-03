@@ -43,11 +43,11 @@ public class ProjectEsigController {
         return new ModelAndView("redirect:/");
     }
 
-    @RequestMapping("delete")
+    @GetMapping("delete")
     public ModelAndView delete(Long id) {
         Item item = itemService.findById(id);
         itemService.deleteById(item.getId());
-        return new ModelAndView("redirect:/home");
+        return new ModelAndView("redirect:/");
     }
 
     @PutMapping("item/{id}")
